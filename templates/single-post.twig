@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+
+	<main id="main">
+    <section class="section section-post-detail">
+      <div class="container">
+				<div class="card-img">
+					<img src="{{ post.thumbnail.src|resize(300, auto) }}" alt="">
+				</div>
+        <div class="post-content">
+					<h3>{{ post.title }}</h3>
+					<p class="blog-author">
+						<time datetime="{{post.date|date("d.m.Y")}}">{{ post.date }}</time>
+					</p>
+					{{post.content}}
+				</div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

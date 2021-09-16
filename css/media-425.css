@@ -1,0 +1,20 @@
+@media (min-width: 425px) {
+	.hero-list {
+		font-size: 24px;
+		padding-left: 22px;
+	}
+
+	.quantity-people-department {
+		flex-direction: row;
+		
+	}
+
+	.quantity-people-department .text-info {
+		width: calc(100% - 65px);
+		padding-left: 15px;
+	}
+
+	.quantity-people-department .img-holder {
+		margin-bottom: 0;
+	}
+}

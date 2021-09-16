@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<main id="main">
+  <section class="section section-events-news">
+    <div class="container">
+      <h3>{{page.title}}</h3>
+      <div uk-filter="target: .js-filter" class="filter-holder">
+        <ul class="uk-subnav uk-subnav-pill">
+          <li class="uk-active" uk-filter-control><a href="#">{{options.filter_text}}</a></li>
+          {% for category in categories if category.slug != 'uncategorized' %}
+              <li uk-filter-control=".card-{{category.slug}}"><a href="#">{{category.name}}</a></li>
+          {% endfor %}
+        </ul>
+        <div class="list-events-news js-filter">
+          {% for post in posts %}
+    
+            <div class="card-news {{post.terms()|map(term => "card-#{term.slug}")|join(' ')}}">
+              <div class="card-img">
+                <img src="{{ post.thumbnail.src }}" alt="">
+                <div class="card-category">
+                  <span>{{post.terms()|join(', ')}}</span>
+                </div>
+              </div>
+              <div class="card-text">
+                <div class="card-text-top">
+                  <time datetime="{{post.post_date}}">{{ post.post_date|date("d.m.Y") }}</time>
+                  <h4>{{post.post_title}}</h4>
+                  <p>{{post.short_description}}</p>
+                </div>
+                <a href="{{post.link}}" class="btn">{{post.btn_text}}</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

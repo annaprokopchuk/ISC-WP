@@ -1,0 +1,43 @@
+<div class="footer">
+	<div class="container">
+		<div class="footer-top">
+			<div class="logo-holder">
+				<a href="{{options.link}}"><img src="{{options.logo.url}}" alt="Інститут монокристалів НАН України" class="logo-img"></a>
+			</div>
+			<ul class="contact-holder">
+				<li class="underline-left"></li>
+				{% if options.address %}
+					<li>{{options.address}}</li>
+				{% endif %}
+				{% for phone in options.phones %}
+					<li><a href="tel:{{phone.number}}" class="underline">{{phone.number}}</a></li>
+				{% endfor %}
+				{% if options.email %}
+					<li><a href="mailto:{{options.email}}" class="underline">{{options.email}}</a></li>
+				{% endif %}
+			</ul>
+			<div class="social-holder">
+				{% if options.socials %}
+					{% set select='' %}
+
+
+					{% for social in options.socials %}
+
+						{% if social.select=='youtube' %}{% set select='youtube' %}{% endif %}
+						{% if social.select=='facebook' %}{% set select='fb' %}{% endif %}
+
+
+
+					<a href="#" class="social-link"><img src="{{theme.link}}/static/images/{{select}}.svg" alt="" class="social-icon"></a>
+					
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+		<div class="footer-bottom">
+			{{options.copyright}}
+			<a href="{{options.site_help.link}}" class="site-help">{{options.site_help.text}}</a>
+		</div>
+		<span class="bg-img bg-page bg-img-1"><img src="{{theme.link}}/static/images/bg-img-1.svg" alt="img"></span>
+	</div>
+</div>

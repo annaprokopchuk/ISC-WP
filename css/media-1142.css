@@ -1,0 +1,19 @@
+@media (min-width: 1142px) {
+	.olc-modal.card-modal .card-text {
+    width: 100%; 
+		margin-left: 0;
+	}
+
+	.olc-modal.modal-body {
+		flex-wrap: nowrap;
+	}
+
+	.olc-modal .card-img img {
+		height: 233px;
+		object-fit: contain;
+	}
+
+	.navbar .navigation .navigation-link {
+		font-size: 18px;
+	}
+}

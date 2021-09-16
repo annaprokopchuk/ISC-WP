@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<main id="main">
+  <section class="section section-scientific-achievements">
+    <div class="container">
+      <h3 class="uk-text-center">{{page.title}}</h3>
+      <ul uk-accordion class="scientific-achievements-list">
+        {% for item in page.meta('accordion_list') %}
+          <li>
+            <h4 class="uk-accordion-title">{{item.title}}</h4>
+            <div class="uk-accordion-content">
+              {{item.content}}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+@media (min-width: 1200px) {
+	.navigation {
+		font-size: var(--h3-font-size);
+	}
+
+	/* .technology-modal .modal-body {
+		overflow: hidden;
+	} */
+
+	.technology-modal .uk-modal-dialog {
+		width: 1110px;
+	}
+
+	.technology-modal .card-modal {
+		display: flex;
+	}
+
+	.technology-modal .card-modal .card-text {
+		width: 50%;
+		margin-left: 10px;
+	}
+	.olc-modal.card-modal .card-text {
+    width: 100%; 
+		margin-left: 0;
+	}
+
+	.width3x {
+		width: calc(50% - 10px);	
+	}
+	
+}

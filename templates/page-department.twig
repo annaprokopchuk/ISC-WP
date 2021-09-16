@@ -1,0 +1,61 @@
+{% extends "base.twig" %}
+
+{% block content %}
+{# {{ dump(page.meta("employees_list")) }} #}
+
+	<main id="main">
+    <section class="section section-leadership">
+      <div class="container">
+        <h3 class="text-transform-uppercase">{{page.title}}</h3>
+        <div class="department-info">
+          {% if page.meta('employees').informations.is_show == true %}
+            <div class="quantity-people-department">
+              <div class="img-holder"><img src="{{theme.link}}/static/images/employees.svg" alt="employees"></div>
+              <div class="text-info">
+                <ul class="quantity-people-list">
+                  {{page.meta('employees').informations.content}}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+          {% if page.meta('employees').link_block.is_show == true %}
+            <ul class="department-link-list">
+              <li><a href="{{page.meta('employees').link_block.research_link}}" class="research-link">Напрями досліджень</a></li>
+              <li><a href="{{page.meta('employees').link_block.publications_link}}" class="publications-link">НАУКОВІ ПУБЛІКАЦІЇ</a></li>
+            </ul>
+          {% endif %}
+        </div>
+        <div class="peoples-list">
+          {% for employee in page.meta("employees_list") %}
+            <div class="card-people">
+              <div class="card-img"><img src="{{ employee.employee.thumbnail.src }}" alt=""></div>
+              <div class="card-text">
+                <div class="card-text-top">
+                  <div class="people-status">{{employee.status}}</div>
+                  <a href="{{employee.employee.meta("link")}}" class="people-name" target="blanck">{{employee.employee.post_title}}</a>
+                  <p>{{employee.employee.meta("speciality")}}</p>
+                </div>
+                <div class="people-contact">
+                  <a href="#{{employee.employee.slug}}" class="people-contact-link" uk-toggle="target: #{{employee.employee.slug}}; animation: uk-animation-fade">Контакти</a>
+                  <div class="peole-contact-holder" id="{{employee.employee.slug}}" hidden>
+                    <ul class="tel-list">
+                      {% for tel in employee.employee.meta("tel_list") %}
+                        <li><a href="tel:{{tel.tel}}">{{tel.tel_is_show}}</a></li>
+                      {% endfor %}
+                    </ul>
+                    <ul class="mail-list">
+                      {% for mail in employee.employee.meta("mail_list") %}
+                        <li><a href="mailto:{{mail.mail}}">{{mail.mail}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+<main id="main">
+	<div class="container">
+		<section class="section section-hero">
+			<ul class="hero-list">
+				{% for item in page.meta('header-list') %}
+				<li>{{ item.header }}</li>
+				{% endfor %}
+			</ul>
+			<div class="hero-img">
+				<img src="{{theme.link}}/static/images/bg-img-2.png" alt="img">
+			</div>
+			<span class="bg-img bg-img-1"><img src="{{theme.link}}/static/images/bg-img-1.svg" alt="img"></span>
+			<span class="bg-img bg-img-2"><img src="{{theme.link}}/static/images/bg-img-1.svg" alt="img"></span>
+			<span class="bg-img bg-img-3"><img src="{{theme.link}}/static/images/bg-img-1.svg" alt="img"></span>
+		</section>
+		<section class="section section-about">
+			<span class="underline-left"></span>
+			<h2 class="section-title">{{page.meta('title')}}</h2>
+			<ul>
+			{% for item in page.meta('list-items') %}
+				<li>{{item.item}}</li>
+			{% endfor %}
+			</ul>
+			<p>{{page.meta('description')}}</p>
+		</section>
+		<section class="section section-technology">
+			{% for item in page.meta('department-block') %}
+				<div class="card-technology">
+					<div class="card-content">
+						<span class="underline-left"></span>
+						<h2 class="card-title">{{item.title}}</h2>
+						<div class="card-img"><img src="{{item.picture.url}}" alt=""></div>
+						<p>{{item.description}}</p>
+					</div>
+					<button type="button" uk-toggle="target: #department-{{ loop.index }}" class="btn">{{item.button_title}}</button>
+				</div>
+				<div id="department-{{ loop.index }}" class="uk-modal  technology-modal uk-flex-top" uk-modal>
+					<div class="uk-modal-body uk-modal-dialog uk-margin-auto-vertical">
+						<button class="uk-modal-close-outside" type="button" uk-close></button>
+						<h2>{{item.title}}</h2>
+						<div class="modal-body" uk-overflow-auto>
+						{% for card in item.details.cards %}
+							<div class="card-modal {% if card.display_option == "column" %} olc-modal {% endif %}">
+								<div class="img-holder">
+								{% for picture in card.picture %}
+									<div class="card-img"><img src="{{picture.url}}" alt="img"></div>
+								{% endfor %}
+								</div>
+								<div class="card-text">
+									{% if card.title %}
+										<h5>{{card.title}}</h5>
+									{% endif %}	
+									<p>{{card.description}}</p>
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+						<a href="{{item.departmentlink.link}}" class="link-department underline">{{item.departmentlink.namedepartment}}</a>
+					</div>
+				</div>
+			{% endfor %}
+			
+		</section>
+		<section class="section section-gallery uk-position-relative">
+			<div uk-slider="autoplay: true">
+				<a href="#" uk-slider-item="previous" class="uk-position-center-left-out gallery-arrow"><span class="arrow"></span></a>
+				<a href="#" uk-slider-item="next" class="uk-position-center-right-out gallery-arrow"><span class="arrow"></span></a>
+				<ul class="uk-slider-items uk-child-width-1">
+					{% for item in page.meta('gallery') %}
+						<li uk-slider-item="0">
+							<img src="{{item.url}}" alt="img">
+						</li>
+					{% endfor %}
+				</ul>
+				<ul class="uk-slider-nav uk-dotnav"></ul>
+			</div>
+		</section>
+	</div>
+</main>
+	
+	
+{% endblock %}

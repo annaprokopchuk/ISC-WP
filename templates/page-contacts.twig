@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{# {{ dump(page.meta("address")) }} #}
+<main id="main">
+  <section class="section section-contacts">
+    <div class="container">
+      <h3 class="text-transform-uppercase">{{page.title}}</h3>
+      
+      <div class="contacts-holder">
+        <div class="contacts-list">
+          <div class="contact-item address-holder">
+            <h5>{{page.meta("address").title}}</h5>
+            <p>{{page.meta("address").address}}</p>
+          </div>
+          <div class="contact-item reception-director">
+            <h5>{{page.meta("reception_director").title}}</h5>
+            <a href="tel:{{page.meta("reception_director").phone}}">{{page.meta("reception_director").phone}}</a>
+          </div>
+          <div class="contact-item office-contacts">
+            <h5>{{page.meta("office_contacts").title}}</h5>
+            <a href="tel:{{page.meta("office_contacts").phone}}">{{page.meta("office_contacts").phone}}</a>
+            <a href="fax:{{page.meta("office_contacts").fax}}">{{page.meta("office_contacts").fax}} (факс).</a>
+          </div>
+          <div class="contact-item human-resources-department-contacts">
+            <h5>{{page.meta("human_resources_department").title}}</h5>
+            <a href="tel:{{page.meta("human_resources_department").phone}}">{{page.meta("human_resources_department").phone}}</a>
+            <a href="mailto:{{page.meta("human_resources_department").mail}}">E-mail: {{page.meta("human_resources_department").mail}}</a>
+          </div>
+        </div>
+        <div class="map-holder">
+          <h5>{{page.meta("map").title}}</h5>
+          <p>{{page.meta("map").coordinates}}</p>
+          <a href="{{page.meta("map").link}}" class="map" target="blank"></a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+</main>
+{% endblock %}
